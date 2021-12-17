@@ -66,14 +66,19 @@ jQuery(document).ready(function ($) {
   });
 });
 
-
+const setDisplayVideo = () => {
+  let timeLoad = sessionStorage.getItem('is_reloaded') ? 1500 : 2000;
+  setTimeout(function () {
+    document.querySelector('#banner__image').style.display = 'none';
+    document.querySelector('#banner__video').style.display = 'block';
+  }, timeLoad);
+};
+setDisplayVideo();
 
 // close menu on click
 const menuBoxItems = document.querySelectorAll(
   '.header__menu-box li.nav__item'
 );
-
-
 
 //handle click menu in mobile
 menuBoxItems.forEach((item, index) => {
@@ -89,8 +94,6 @@ menuBoxItems.forEach((item, index) => {
   }
 });
 
-
-
 // active navbar
 const navBarLinkItems = document.querySelectorAll('a.nav__item');
 
@@ -100,8 +103,6 @@ const resetActive = () => {
     item.classList.remove('active');
   });
 };
-
-
 
 // handle click button nav bar
 navBarLinkItems.forEach((item, index) => {
@@ -121,9 +122,6 @@ navBarLinkItems.forEach((item, index) => {
     });
   }
 });
-
-
-
 
 // handle hightlight navbar on scroll event
 const sections = document.querySelectorAll('section');
